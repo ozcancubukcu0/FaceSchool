@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kayıt Ekle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        
+        input[type="submit"] ,button{
+            padding: 10px 20px;
+            background-color: cornflowerblue;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            }
+        input[type="submit"],button :hover{
+            background-color: lightblue;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kayıt Ekle</h1>
+    <div class="container">
+        <form method="POST" action="/derslerekayit">
+            <label for="ogrenci">Öğrenci:</label>
+            <select id="ogrenci" name="ogrenci">
+                {% for ogrenci in ogrenciler %}
+                    <option value="{{ ogrenci.id }}">{{ ogrenci.ad }} {{ ogrenci.soyad }} ({{ ogrenci.numara }})</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="ders">Ders:</label>
+            <select id="ders" name="ders">
+                {% for ders in dersler %}
+                    <option value="{{ ders.id }}">{{ ders.ders_ad }} ({{ ders.ders_kod }})</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Kaydet"><br><br>
+        </form>
+        
+        <button onclick="window.location.href = '/yoneticiana';"> Ana Sayfa</button>
+    </div>
+    
+</body>
+</html>

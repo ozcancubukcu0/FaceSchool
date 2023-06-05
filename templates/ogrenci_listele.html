@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Öğretmen Uygulaması</title>
+</head>
+<body>
+    <h1>Ders Seçimi</h1>
+    <form action="/ogrenciler" method="POST">
+        <label for="ders_ad">Ders Adı:</label>
+        <select id="ders_ad" name="ders_ad">
+            {% for ders in dersler %}
+                <option value="{{ ders[0] }}">{{ ders[0] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Listele</button>
+    </form>
+
+    {% if ogrenciler %}
+        <h2>Öğrenci Listesi</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Numara</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ogrenci in ogrenciler %}
+                    <tr>
+                        <td>{{ ogrenci[0] }}</td>
+                        <td>{{ ogrenci[1] }}</td>
+                        <td>{{ ogrenci[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bölüm Ekle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] ,button{
+            padding: 10px 20px;
+            background-color: cornflowerblue;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            }
+        input[type="submit"],button :hover{
+            background-color: lightblue;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bölüm Ekle</h1>
+    <div class="container">
+        <form method="POST" action="/bolumekle">
+            <label for="bolum_ad">Yerleşke Adı:</label>
+            <input type="text" id="yerleske" name="yerleske" required><br><br>
+            <label for="bolum_ad">Bölüm Adı:</label>
+            <input type="text" id="bolum_ad" name="bolum_ad" required><br><br>
+            <label for="bolum_kod">Bölüm Kodu:</label>
+            <input type="text" id="bolum_kod" name="bolum_kod" maxlength="10"  required><br><br>
+            <input type="submit" value="Ekle">
+            <button onclick="window.location.href = '/yoneticiana';"> Ana Sayfa</button>
+        </form>
+        <div class="mesaj">
+            {% if message %}
+            <p>{{ message }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

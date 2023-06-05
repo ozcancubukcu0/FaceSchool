@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğretmen Ana Sayfa</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: cornflowerblue;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 250px;
+            height: 50px;
+            color: white;
+
+        }
+
+        button:hover {
+            background-color: lightsteelblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yönetici</h1>
+    <div class="container">
+        <form method="POST" action="/ogrenci_islemleri">
+            <button type="submit" name="istek" value="ogrenciekle">Öğrenci Ekle</button>
+            <button type="submit" name="istek" value="derskayit">Öğrenci Ders Kaydı</button>
+            <button type="submit" name="istek" value="ogrencigor">Öğrencileri Gör</button>
+        </form>
+    </div>
+</body>
+</html>

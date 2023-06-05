@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yoklama Analizi</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .form-box {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select, input[type="submit"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yoklama Analizi</h1>
+    
+    <div class="form-box">
+        <form method="POST" action="/analiz">
+            <label for="ders">Ders Adı:</label>
+            <select name="ders" id="ders">
+                <option value="">Tüm Dersler</option>
+                {% for ders in dersler %}
+                    <option value="{{ ders[0] }}">{{ ders[0] }}</option>
+                {% endfor %}
+            </select>
+        
+            <label for="tarih">Tarih:</label>
+            <select name="tarih" id="tarih">
+                <option value="">Tüm Tarihler</option>
+                {% for tarih in tarihler %}
+                    <option value="{{ tarih[0] }}">{{ tarih[0] }}</option>
+                {% endfor %}
+            </select>
+        
+            <input type="submit" value="Ara">
+        </form>
+    </div>
+</body>
+</html>

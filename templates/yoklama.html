@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yoklama Al Sayfası</title>
+</head>
+<body>
+    <h1>Yoklama Al</h1>
+    
+    <form action="/yoklama" method="POST">
+        <select name="ders_ad">
+            {% for ders in dersler %}
+                <option value="{{ ders[0] }}">{{ ders[0] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="number" name="hafta" placeholder="Hafta">
+        <br>
+        <input type="submit" value="Yoklama Al">
+    </form>
+</body>
+</html>

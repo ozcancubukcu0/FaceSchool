@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Öğrenci Ekle</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+input[type="submit"] ,button{
+    padding: 10px 20px;
+    background-color: cornflowerblue;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"],button:hover {
+    background-color: skyblue;
+}
+.container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .mesaj{
+            color: green;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Öğrenci Ekle</h1>
+    <div class="container">
+        <form action="/add_student" method="POST" enctype="multipart/form-data">
+            <label for="ad">Ad:</label>
+            <input type="text" id="ad" name="ad" required><br>
+    
+            <label for="soyad">Soyad:</label>
+            <input type="text" id="soyad" name="soyad" required><br>
+    
+            <label for="soyad">TC:</label>
+            <input type="text" id="tc" name="tc" maxlength="11" required><br>
+    
+            <label for="numara">Numara:</label>
+            <input type="text" id="numara" name="numara" maxlength="10" required><br>
+    
+            <label for="bolum">Bölüm:</label>
+            <select id="bolum" name="bolum" required>
+                {% for bolum in bolumler %}
+                    <option value="{{ bolum[0] }}">{{ bolum[0] }}</option>
+                {% endfor %}
+            </select><br>
+    
+            <label for="foto">Fotoğraf:</label>
+            <input type="file" id="foto" name="foto" required><br>
+    
+            <input type="submit" value="Ekle">
+            <button onclick="window.location.href = '/yoneticiana';"> Ana Sayfa</button>
+        </form>
+    </div>
+    <div class="mesaj">
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+    </div>
+    
+</body>
+</html>

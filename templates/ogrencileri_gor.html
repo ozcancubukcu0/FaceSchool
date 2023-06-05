@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ders Seçimi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: cornflowerblue;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"] :hover{
+            background-color: lightblue;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .btn{
+            background-color: cornflowerblue;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            margin: 0 auto;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Öğrenci Listesi</h2>
+    <button onclick="window.location.href = '/yoneticiana';" class="btn"> Ana Sayfa</button>
+    <div>
+        <form action="/ogrencilerigor" method="post">
+            <select name="ders_ad">
+                {% for ders in dersler %}
+                <option value="{{ ders[0] }}">{{ ders[0] }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Öğrencileri Listele">
+        </form>
+
+    </div>
+    
+    
+    {% if ogrenciler %}
+    <h2>Öğrenciler (Toplam: {{ ogrenciler|length }})</h2>
+    {% if secilen_ders %}
+    <h3>Ders: {{ secilen_ders }}</h3>
+    {% endif %}
+    <table>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Numara</th>
+        </tr>
+        {% for ogrenci in ogrenciler %}
+        <tr>
+            <td>{{ ogrenci[0] }}</td>
+            <td>{{ ogrenci[1] }}</td>
+            <td>{{ ogrenci[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>

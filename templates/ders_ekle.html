@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ders Ekle</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] ,button{
+            padding: 10px 20px;
+            background-color: cornflowerblue;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 0 auto;
+            }
+        input[type="submit"],button :hover{
+            background-color: lightblue;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ders Ekle</h1>
+    <div class="container">
+        <form method="POST" action="/dersekle">
+            <label for="ders_ad">Ders Adı:</label>
+            <input type="text" id="ders_ad" name="ders_ad" required><br><br>
+            <label for="ders_kod">Ders Kodu:</label>
+            <input type="text" id="ders_kod" name="ders_kod" maxlength="6" required><br><br>
+            <label for="bolum_ad">Bölüm Adı:</label>
+            <select id="bolum_ad" name="bolum_ad" required>
+                {% for bolum in bolumler %}
+                <option value="{{ bolum.bolum_ad }}">{{ bolum.bolum_ad }}</option>
+                {% endfor %}
+            </select><br><br>
+            <input type="submit" value="Ekle"><br><br>
+        </form>
+        
+        <button onclick="window.location.href = '/yoneticiana';"> Ana Sayfa</button>
+    </div>
+    
+    
+</body>
+</html>
